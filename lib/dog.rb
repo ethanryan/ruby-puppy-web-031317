@@ -1,23 +1,27 @@
+require "pry"
+
 class Dog
+
+  attr_reader :name #attr_reader is a 'getter' method, it gets the name of the puppy.
+  attr_accessor :name, :all #checking to see if this makes a difference...
 
   @@all = []
 
-  attr_reader :name #attr_reader is a 'getter' method, it gets the name of the puppy.
-#  attr_accessor
+#binding.pry
 
   def initialize(name)
     @name = name
-    @@all << name
-    self.all
+    @@all << self #each dog name gets stored in the @@all array... this needs to be self for this lab
+    #self.all
   end
 
   def self.clear_all
-    @@all = []
+    @@all.clear
   end #end method
 
   def self.all
-    @@all.each do |name|
-      puts name
+    @@all.each do |puppy|
+      puts "#{puppy.name}"
     end #end loop
   end #end method
 
